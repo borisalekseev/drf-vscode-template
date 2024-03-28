@@ -1,0 +1,51 @@
+[tool.poetry]
+name = "fts-backend"
+version = "0.1.0"
+description = "Backend for processing fts data in dchem"
+authors = ["borisalekseev <i.borisalekseev@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = ">=5.0,<6.0"
+djangorestframework = ">=3.15.1"
+
+[tool.poetry.dev-dependencies]
+django-extensions = "^3.2.3"
+mypy = ">=1.5.0"
+django-stubs = {extras = ["compatible-mypy"], version = ">=4.0"}
+djangorestframework-stubs = {extras = ["compatible-mypy"], version= ">=3"}
+black = ">=24.3.0"
+isort = "^5.13.2"
+
+[tool.mypy]
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_untyped_calls = true
+disallow_untyped_decorators = true
+ignore_errors = false
+ignore_missing_imports = true
+implicit_reexport = false
+strict_optional = true
+strict_equality = true
+no_implicit_optional = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unused_configs = true
+warn_unreachable = true
+warn_no_return = true
+explicit_package_bases = true
+
+plugins = ['mypy_django_plugin.main', 'mypy_drf_plugin.main']
+
+[tool.django-stubs]
+django_settings_module = 'src.fts'
+
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = 'black'
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
